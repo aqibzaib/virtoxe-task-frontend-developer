@@ -1,0 +1,31 @@
+.browser-window-container {
+  width: 1200px;
+  max-width: 95vw; /* Changed from fixed width for responsiveness */
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  color: #333;
+}
+
+.content-area {
+  padding: 20px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+}
+
+.content-area h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .browser-window-container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
