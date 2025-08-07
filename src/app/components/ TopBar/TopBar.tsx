@@ -39,19 +39,21 @@ const TopBar = () => {
           />
         ))}
       </div>
+
       <div className={styles["address-bar-area"]}>
-        <div className={`${styles["nav-icons"]} ${styles.left}`}>
+        <div className={styles["nav-icons"]}>
           <FaChevronLeft className={styles.icon} />
           <FaChevronRight className={`${styles.icon} ${styles.disabled}`} />
           <FaSyncAlt className={styles.icon} />
         </div>
         <AddressBar />
-        <div className={`${styles["nav-icons"]} ${styles.right}`}>
+        <div className={styles["nav-icons"]}>
           <FaLock className={styles.icon} />
           <FaStar className={styles.icon} />
           <FaEllipsisV className={styles.icon} />
         </div>
       </div>
+
       <div className={styles["window-controls"]}>
         <div className={styles["control-button"]}>_</div>
         <div className={styles["control-button"]}>□</div>

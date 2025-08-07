@@ -1,49 +1,47 @@
 .top-bar-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
   background-color: #f1f3f4;
   border-bottom: 1px solid #e1e1e1;
   padding: 0 8px;
+  height: 36px; /* approximate Chrome top bar height */
+  gap: 12px;
 }
 
+/* Tabs: shrink as needed, but don’t grow */
 .tabs-section {
   display: flex;
-  grid-column: 1 / 2;
+  gap: 8px;
+  flex-shrink: 0;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
-
 .tabs-section::-webkit-scrollbar {
   display: none;
 }
 
+/* Address bar area grows to fill leftover space */
 .address-bar-area {
   display: flex;
   align-items: center;
-  grid-column: 2 / 3;
-  background-color: #e8eaed; /* Lighter background for better contrast */
-  border-radius: 20px; /* Adjusting border-radius for more accurate look */
-  padding: 8px 12px;
+  background-color: #e8eaed;
+  border-radius: 20px;
+  padding: 0 12px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  margin: 0 16px;
+  flex-grow: 1;
+  gap: 12px;
+  min-width: 200px; /* prevents too small on narrow screens */
+  max-width: 800px; /* optional max width */
 }
 
+/* Nav icons inside address bar */
 .nav-icons {
   display: flex;
   align-items: center;
   color: #5f6368;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   gap: 12px;
-}
-
-.nav-icons.left {
-  padding-right: 16px;
-}
-
-.nav-icons.right {
-  padding-left: 16px;
 }
 
 .icon {
@@ -61,11 +59,12 @@
   cursor: not-allowed;
 }
 
+/* Window controls fixed size, no shrink */
 .window-controls {
   display: flex;
-  grid-column: 3 / 4;
-  justify-content: flex-end;
-  height: 30px;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .control-button {
@@ -74,9 +73,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   color: #5f6368;
+  user-select: none;
+  border-radius: 0 3px 3px 0;
 }
 
 .control-button:hover {
@@ -85,25 +86,17 @@
 
 .control-button.close:hover {
   background-color: #e81123;
-  color: #fff;
+  color: white;
 }
 
+/* Responsive: hide tabs and window controls on mobile */
 @media (max-width: 768px) {
-  .top-bar-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    padding: 0;
-  }
-  .tabs-section {
-    grid-column: 1 / -1;
-    padding-left: 10px;
-  }
-  .address-bar-area {
-    grid-column: 1 / -1;
-    margin: 8px;
-    padding: 8px;
-  }
+  .tabs-section,
   .window-controls {
     display: none;
+  }
+  .address-bar-area {
+    max-width: 100%;
+    margin: 0 8px;
   }
 }
